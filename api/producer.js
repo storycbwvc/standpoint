@@ -34,7 +34,7 @@ const produce = async () => {
 				messages: [
                     {
                         key: String(i),
-                        value: `{"alert":{ "uasid": "${uuid}", "lon": "${long + p}", "lat": "${lat}"}}`,
+                        value: `{ "uasid": "${uuid}", "lon": "${long + p}", "lat": "${lat}"}`,
                     },
                     // {
                     //     key: String(i + 1),

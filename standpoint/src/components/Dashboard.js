@@ -23,6 +23,7 @@ import 'leaflet/dist/leaflet.css';
 import boise from '../FAA_UAS_FacilityMap_Boise_Data.json';
 import mountainhome from '../FAA-UAS_FacilityMap_MountainHome_Data.json';
 import { MapContainer, TileLayer, useMap, Marker, Popup, GeoJSON, Tooltip } from 'react-leaflet'
+import axios from 'axios';
 import '../labels.css';
 
 
@@ -94,12 +95,17 @@ export default function Dashboard() {
 const [alert, setAlert] = useState([]);
 
 useEffect(() => {
-  fetch("http://127.0.0.1:3000/api/messages", { mode: 'no-cors'})
-  .then(data => {setAlert(data.message)
-                 console.log(data)});
+  axios.get('http://localhost:3000/api/messages').then(resp => {
+
+   if(resp.data){
+    console.log(resp.data);
+    setAlert(resp.data);
+   }
+   
+});
 },[])
 
-console.log(alert);
+
 
   const toggleDrawer = () => {
     setOpen(!open);

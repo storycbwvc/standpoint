@@ -31,21 +31,18 @@ const consume = async () => {
 		// this function is called every time the consumer gets a new message
 		eachMessage: ({ message }) => {
 			// here, we just log the message to the standard output
-			console.log({
-                key: message.key.toString(),
-                value: message.value.toString(),
-                headers: message.headers,
-            })
-            data.push({
-                key: message.key.toString(),
-                value: message.value.toString(),
-                headers: message.headers,
-            })
+			// console.log({
+            //     key: message.key.toString(),
+            //     value: message.value.toString(),
+            //     headers: message.headers,
+            // })
+            data.push(JSON.parse(message.value.toString()))
 		},
 	})
 }
 
 const getData = () =>{
+	console.log(data);
     return data;
 }
 

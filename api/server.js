@@ -10,7 +10,6 @@ const app = express(),
 const fs = require('fs');
 
 const produce = require("./producer.js");
-//const consume = require("./consumer.js");
 const consumer = require('./consumer.js');
 
 // call the `produce` function and log an error if it occurs
@@ -31,9 +30,9 @@ app.use(express.static(path.join(__dirname, '../standpoint/build')));
 app.get('/api/messages', (req, res) => {
   console.log('api/ called!')
   let data = consumer.getData()
-  console.log("This is Data");
+  
   data = JSON.stringify(data);
-  data = data.replace("\\\\", "")
+  console.log("this is data return");
   console.log(data);
   res.send(data);
 });
